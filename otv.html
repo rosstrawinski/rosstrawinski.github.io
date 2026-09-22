@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Over Terrain Vehicle — Ross Trawinski</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{ color-scheme: dark; --bg:#0C1116; --panel:#121922; --panel-2:#0F151C; --ink:#E7ECF1; --ink-dim:#8C99A6; --line:#26313C; --amber:#FF8C42; --blue:#4FB3DB;
+    padding-top: env(safe-area-inset-top,0px); padding-bottom: env(safe-area-inset-bottom,0px); }
+  html{ scroll-padding-top: env(safe-area-inset-top,0px); }
+  *{ box-sizing:border-box; }
+  body{ margin:0; background:var(--bg); color:var(--ink); font-family:'IBM Plex Sans',system-ui,sans-serif; line-height:1.6; }
+  .mono{ font-family:'IBM Plex Mono',ui-monospace,monospace; }
+  .display{ font-family:'Space Grotesk','IBM Plex Sans',sans-serif; }
+  .wrap{ max-width:980px; margin:0 auto; padding:0 28px; }
+  a{ color:inherit; }
+  a:focus-visible{ outline:2px solid var(--blue); outline-offset:3px; }
+
+  header{ position:sticky; top:env(safe-area-inset-top,0px); z-index:10; background:rgba(12,17,22,.9); backdrop-filter:blur(6px); border-bottom:1px solid var(--line); }
+  nav.wrap{ display:flex; align-items:center; justify-content:space-between; height:64px; }
+  .back{ font-size:.86rem; text-decoration:none; color:var(--ink-dim); display:flex; align-items:center; gap:8px; }
+  .back:hover{ color:var(--ink); }
+  .brand{ font-size:1rem; font-weight:500; }
+  .brand span{ color:var(--amber); }
+
+  .hero{ padding:56px 0 36px; border-bottom:1px solid var(--line); }
+  .status{ display:inline-block; font-size:.72rem; color:var(--amber); border:1px solid var(--amber); padding:3px 8px; margin-bottom:16px; }
+  .hero h1{ font-size:clamp(2rem,4.5vw,3rem); font-weight:700; margin:0 0 10px; max-width:18ch; }
+  .hero .role{ color:var(--ink-dim); font-size:.95rem; }
+
+  .cover{ aspect-ratio:16/9; border:1px dashed var(--line); background:var(--panel-2); display:flex; align-items:center; justify-content:center; text-align:center; padding:24px; color:var(--ink-dim); font-size:.9rem; margin:36px 0 0; }
+
+  section{ padding:56px 0; border-bottom:1px solid var(--line); }
+  .layout{ display:grid; grid-template-columns:1.5fr 1fr; gap:48px; }
+  .layout p{ color:var(--ink-dim); margin:0 0 16px; }
+  .layout h2{ font-size:1.2rem; margin:0 0 16px; }
+
+  aside .spec{ border:1px solid var(--line); background:var(--panel); padding:18px; margin-bottom:16px; }
+  aside .row{ display:flex; justify-content:space-between; font-size:.85rem; padding:7px 0; border-top:1px solid var(--line); }
+  aside .row:first-child{ border-top:none; }
+  .chips{ display:flex; flex-wrap:wrap; gap:8px; margin-top:4px; }
+  .chip{ font-size:.76rem; border:1px solid var(--line); padding:5px 10px; color:var(--ink-dim); }
+
+  .video-slot{ aspect-ratio:16/9; border:1px dashed var(--line); background:var(--panel-2); display:flex; align-items:center; justify-content:center; text-align:center; padding:24px; color:var(--ink-dim); font-size:.9rem; }
+
+  .gallery{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  .g-slot{ aspect-ratio:1/1; border:1px dashed var(--line); background:var(--panel-2); display:flex; align-items:center; justify-content:center; text-align:center; padding:14px; color:var(--ink-dim); font-size:.78rem; }
+
+  footer{ padding:48px 0; }
+  footer a{ text-decoration:none; border-bottom:1px solid var(--line); padding-bottom:2px; font-size:.9rem; }
+  footer a:hover{ border-color:var(--amber); }
+
+  @media (max-width:720px){ .layout{ grid-template-columns:1fr; } .gallery{ grid-template-columns:1fr 1fr; } }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a class="back mono" href="https://claude.ai/artifact/6bx7pPrbJqUAXiYMtVLKDK">&larr; Home</a>
+    <div class="brand display">ROSS TRAWINSKI<span>.</span></div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="status mono">AUG–DEC 2025</div>
+    <h1 class="display">UMD Over Terrain Vehicle</h1>
+    <div class="role mono">Programming &amp; Structures Lead · College Park, MD</div>
+    <div class="cover">Add cover photo: the vehicle on the course<br>(recommend 16:9, full chassis visible)</div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap layout">
+    <div>
+      <h2 class="display">Overview</h2>
+      <p>[Add a paragraph on the project brief — what the OTV course required and what "complete without error" meant in practice.]</p>
+      <p>As programming and structures lead, I wrote the obstacle-course navigation logic in C++ on Arduino, handling sensor input and decision-making for the vehicle to move through the course autonomously.</p>
+      <p>Alongside the code, I directed a subteam through the build, coordinating deliverables with the project manager to keep the schedule on track.</p>
+      <p>[Add a caption on the final run — what the course looked like, and what made your team one of only two to finish every task without error.]</p>
+    </div>
+    <aside>
+      <div class="spec mono">
+        <div class="row"><span>Role</span><span>Programming &amp; Structures Lead</span></div>
+        <div class="row"><span>Language</span><span>C++</span></div>
+        <div class="row"><span>Platform</span><span>Arduino</span></div>
+        <div class="row"><span>Result</span><span>1 of 2 error-free teams</span></div>
+      </div>
+      <div class="chips mono">
+        <span class="chip">C++</span>
+        <span class="chip">Arduino</span>
+        <span class="chip">Team Leadership</span>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 class="display" style="margin-bottom:20px;">Course run</h2>
+    <div class="video-slot">Add course-run video<br>(embed a link or upload the final autonomous run)</div>
+  </div>
+</section>
+
+<section style="border-bottom:none;">
+  <div class="wrap">
+    <h2 class="display" style="margin-bottom:20px;">Photo gallery</h2>
+    <div class="gallery">
+      <div class="g-slot">Chassis / structure close-up</div>
+      <div class="g-slot">Team working on the build</div>
+      <div class="g-slot">Vehicle on the obstacle course</div>
+      <div class="g-slot">Code / sensor setup</div>
+      <div class="g-slot">Final run in progress</div>
+      <div class="g-slot">Team photo after completion</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a class="mono" href="https://claude.ai/artifact/6bx7pPrbJqUAXiYMtVLKDK">&larr; Back to all projects</a>
+  </div>
+</footer>
+
+</body>
+</html>

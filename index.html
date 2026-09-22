@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ross Trawinski — Aerospace Engineering</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme: dark;
+    --bg: #0C1116;
+    --panel: #121922;
+    --panel-2: #0F151C;
+    --ink: #E7ECF1;
+    --ink-dim: #8C99A6;
+    --line: #26313C;
+    --amber: #FF8C42;
+    --blue: #4FB3DB;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  html{ scroll-padding-top: env(safe-area-inset-top, 0px); }
+  *{ box-sizing: border-box; }
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:'IBM Plex Sans', system-ui, sans-serif;
+    line-height:1.55;
+  }
+  .mono{ font-family:'IBM Plex Mono', ui-monospace, monospace; }
+  .display{ font-family:'Space Grotesk', 'IBM Plex Sans', sans-serif; }
+  .wrap{ max-width:980px; margin:0 auto; padding:0 28px; }
+  a{ color:inherit; }
+
+  /* NAV */
+  header{ position:sticky; top:env(safe-area-inset-top,0px); z-index:10; background:rgba(12,17,22,.9); backdrop-filter:blur(6px); border-bottom:1px solid var(--line); }
+  nav.wrap{ display:flex; align-items:center; justify-content:space-between; height:64px; }
+  .brand{ font-size:1rem; font-weight:500; letter-spacing:.01em; }
+  .brand span{ color:var(--amber); }
+  .navlinks{ display:flex; gap:28px; font-size:.9rem; color:var(--ink-dim); }
+  .navlinks a{ text-decoration:none; }
+  .navlinks a:hover{ color:var(--ink); }
+  .navlinks a:focus-visible, a:focus-visible{ outline:2px solid var(--blue); outline-offset:3px; }
+
+  /* HERO */
+  .hero{ padding:88px 0 64px; border-bottom:1px solid var(--line); }
+  .hero .tag{ font-size:.82rem; color:var(--blue); margin-bottom:18px; }
+  .hero h1{ font-size:clamp(2.2rem, 5vw, 3.6rem); font-weight:700; line-height:1.08; margin:0 0 22px; max-width:14ch; }
+  .hero p{ max-width:52ch; color:var(--ink-dim); font-size:1.05rem; margin:0 0 34px; }
+  .stat-strip{ display:flex; flex-wrap:wrap; gap:0; border:1px solid var(--line); }
+  .stat{ flex:1 1 160px; padding:16px 18px; border-right:1px solid var(--line); }
+  .stat:last-child{ border-right:none; }
+  .stat .k{ font-size:.72rem; color:var(--ink-dim); margin-bottom:6px; }
+  .stat .v{ font-size:.92rem; }
+
+  section{ padding:64px 0; border-bottom:1px solid var(--line); }
+  .section-head{ display:flex; align-items:baseline; justify-content:space-between; margin-bottom:34px; gap:16px; }
+  .section-head h2{ font-size:1.5rem; font-weight:700; margin:0; }
+  .section-head .idx{ font-size:.78rem; color:var(--ink-dim); }
+
+  /* ABOUT */
+  .about-grid{ display:grid; grid-template-columns:1.3fr 1fr; gap:48px; }
+  .about-grid p{ color:var(--ink-dim); margin:0 0 16px; }
+  .edu-card{ border:1px solid var(--line); background:var(--panel); padding:20px; }
+  .edu-card .school{ font-weight:600; margin-bottom:4px; }
+  .edu-card .meta{ font-size:.85rem; color:var(--ink-dim); margin-bottom:14px; }
+  .edu-card .row{ display:flex; justify-content:space-between; font-size:.85rem; padding:6px 0; border-top:1px solid var(--line); }
+  .edu-card .row:first-of-type{ border-top:none; }
+
+  /* PROJECTS */
+  .project-card{ display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:start; margin-bottom:56px;
+    text-decoration:none; color:inherit; padding:20px; margin-left:-20px; margin-right:-20px; border:1px solid transparent; transition:border-color .15s ease, background .15s ease; }
+  .project-card:last-child{ margin-bottom:0; }
+  .project-card:hover, .project-card:focus-visible{ border-color:var(--line); background:var(--panel-2); }
+  .project-card.reverse .media{ order:2; }
+  .project-card.reverse .body{ order:1; }
+  .media{ aspect-ratio:4/3; border:1px dashed var(--line); background:var(--panel-2);
+    display:flex; align-items:center; justify-content:center; text-align:center; padding:24px; color:var(--ink-dim); font-size:.85rem; }
+  .body .status{ display:inline-block; font-size:.72rem; color:var(--amber); border:1px solid var(--amber); padding:3px 8px; margin-bottom:14px; }
+  .body h3{ font-size:1.3rem; margin:0 0 6px; }
+  .body .role{ color:var(--ink-dim); font-size:.88rem; margin-bottom:16px; }
+  .body .teaser{ margin:0 0 18px; color:var(--ink-dim); font-size:.94rem; max-width:42ch; }
+  .body .view{ font-size:.82rem; color:var(--blue); }
+  .project-card:hover .view{ color:var(--amber); }
+
+  .coming-soon{ border:1px solid var(--line); padding:18px 20px; display:flex; align-items:center; justify-content:space-between; gap:16px; color:var(--ink-dim); font-size:.9rem; margin-top:8px; }
+  .coming-soon .dot{ width:7px; height:7px; border-radius:50%; background:var(--blue); display:inline-block; margin-right:8px; }
+
+  /* SKILLS */
+  .skills-grid{ display:grid; grid-template-columns:1fr 1fr; gap:40px; }
+  .skill-col .h{ font-size:.8rem; color:var(--blue); margin-bottom:14px; }
+  .skill-col ul{ list-style:none; margin:0; padding:0; }
+  .skill-col li{ padding:10px 0; border-top:1px solid var(--line); font-size:.94rem; }
+  .skill-col li:first-child{ border-top:none; }
+
+  /* CONTACT */
+  footer{ padding:64px 0 48px; }
+  footer h2{ font-size:1.6rem; margin:0 0 18px; max-width:16ch; }
+  .contact-row{ display:flex; flex-wrap:wrap; gap:28px; font-size:.92rem; }
+  .contact-row a{ text-decoration:none; border-bottom:1px solid var(--line); padding-bottom:2px; }
+  .contact-row a:hover{ border-color:var(--amber); }
+  .foot-note{ margin-top:48px; color:var(--ink-dim); font-size:.78rem; }
+
+  @media (max-width:720px){
+    .about-grid, .skills-grid{ grid-template-columns:1fr; }
+    .project-card, .project-card.reverse{ grid-template-columns:1fr; margin-left:0; margin-right:0; }
+    .project-card.reverse .media, .project-card.reverse .body{ order:initial; }
+    .navlinks{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="brand display">ROSS TRAWINSKI<span>.</span></div>
+    <div class="navlinks mono">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="tag mono">AEROSPACE ENGINEERING &nbsp;/&nbsp; UNIVERSITY OF MARYLAND</div>
+    <h1 class="display">Structures, flight systems, and the builds in between.</h1>
+    <p>I'm a sophomore studying aerospace engineering at the University of Maryland, working on composite rocket airframes with Terrapin Rockets and building autonomous and flight vehicles on my own time.</p>
+    <div class="stat-strip mono">
+      <div class="stat"><div class="k">LOCATION</div><div class="v">Baldwin / College Park, MD</div></div>
+      <div class="stat"><div class="k">STATUS</div><div class="v">Seeking Summer 2027 internship</div></div>
+      <div class="stat"><div class="k">FOCUS</div><div class="v">Aerostructures &amp; flight controls</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="display">About</h2>
+      <div class="idx mono">01</div>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p>I got into engineering through building things that had to actually fly — quadcopters that had to survive a crash, structures that had to hold up under load. That hands-on start is still how I like to work: design it, build it, test it, and fix what breaks.</p>
+        <p>At UMD I'm part of the Terrapin Rockets Aerostructures team, laying up and winding composite airframe components toward an IREC competition launch. Outside of coursework, I design and fly FPV quadcopters and have led a subteam building an autonomous ground vehicle.</p>
+      </div>
+      <div class="edu-card">
+        <div class="school display">University of Maryland</div>
+        <div class="meta">B.S. Aerospace Engineering · Aug 2025 – May 2029</div>
+        <div class="row mono"><span>GPA</span><span>3.3 / 4.0</span></div>
+        <div class="row mono"><span>Honors</span><span>Fall 2025</span></div>
+        <div class="row mono"><span>Team</span><span>Terrapin Rockets</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="display">Projects</h2>
+      <div class="idx mono">02</div>
+    </div>
+
+    <a class="project-card" href="https://claude.ai/artifact/RkReT6XKfctyw13uM5YJpa">
+      <div class="media">Add photo: FPV quadcopter build<br>(bench shot or flight still)</div>
+      <div class="body">
+        <div class="status mono">ONGOING · 2019–PRESENT</div>
+        <h3 class="display">FPV Drone Build</h3>
+        <div class="role">Independent engineering project · Baldwin, MD</div>
+        <p class="teaser">Designing, building, and tuning freestyle quadcopters from bare frame to flight-ready — electronics, firmware, and 3D-printed parts included.</p>
+        <span class="view mono">View project &rsaquo;</span>
+      </div>
+    </a>
+
+    <a class="project-card reverse" href="https://claude.ai/artifact/573vpmPWPVPv73RGLwaE1V">
+      <div class="media">Add photo: Over Terrain Vehicle<br>(chassis or course run)</div>
+      <div class="body">
+        <div class="status mono">AUG–DEC 2025</div>
+        <h3 class="display">UMD Over Terrain Vehicle</h3>
+        <div class="role">Programming &amp; Structures Lead · College Park, MD</div>
+        <p class="teaser">Led programming and structures for an autonomous ground vehicle, writing the C++ navigation logic that carried the team to an error-free course run.</p>
+        <span class="view mono">View project &rsaquo;</span>
+      </div>
+    </a>
+
+    <div class="coming-soon mono">
+      <div><span class="dot"></span>Terrapin Rockets — Aerostructures &amp; IREC nose cone layup</div>
+      <div>WRITE-UP IN PROGRESS</div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="display">Skills</h2>
+      <div class="idx mono">03</div>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-col">
+        <div class="h mono">SOFTWARE</div>
+        <ul>
+          <li>SolidWorks</li>
+          <li>Autodesk Inventor</li>
+          <li>Fusion 360</li>
+          <li>MATLAB</li>
+          <li>Python · Java</li>
+          <li>Excel</li>
+        </ul>
+      </div>
+      <div class="skill-col">
+        <div class="h mono">PRACTICAL</div>
+        <ul>
+          <li>Carbon fiber composite layup</li>
+          <li>FDM &amp; SLA 3D printing</li>
+          <li>Soldering &amp; electronics repair</li>
+          <li>3D slicing &amp; power tools</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <h2 class="display">Let's talk about your team's next build.</h2>
+    <div class="contact-row mono">
+      <a href="mailto:rosstrawinski@gmail.com">rosstrawinski@gmail.com</a>
+      <a href="tel:4103037783">410-303-7783</a>
+      <a href="https://linkedin.com/in/ross-trawinski" target="_blank" rel="noopener">linkedin.com/in/ross-trawinski</a>
+    </div>
+    <div class="foot-note mono">Ross Trawinski · College Park, MD</div>
+  </div>
+</footer>
+
+</body>
+</html>
